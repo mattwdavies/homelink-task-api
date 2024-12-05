@@ -14,4 +14,5 @@ export enum ErrorMessage {
   DEVICE_UPDATE_FAILED = 'Failed to update device',
   DEVICE_DELETE_FAILED = 'Failed to delete device',
   DEVICE_NOT_FOUND = 'Device not found',
+  INVALID_DEVICE_ID = 'Invalid device ID format',
 }

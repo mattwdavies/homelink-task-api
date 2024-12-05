@@ -4,16 +4,21 @@ import knexConfig from '../knexfile';
 const db = knex(knexConfig);
 
 export interface Device {
-  id?: number;
+  id?: string;
   name: string;
   type: string;
-  status: string;
+  model: string;
+  status?: boolean;
 }
 
 export const createDevice = async (device: Device) => {
-  return await db('devices').insert(device).returning('*');
+  try {
+    return await db('devices').insert(device).returning('*');
+  } catch (error) {
+    console.error('db insert error:', error);
+    throw error;
+  }
 };
-
 export const getAllDevices = async () => {
   return await db('devices').select('*');
 };
@@ -22,11 +27,10 @@ export const getDeviceById = async (id: string) => {
   return await db('devices').where({ id }).first();
 };
 
-export const updateDevice = async (id: number, updates: Partial<Device>) => {
+export const updateDevice = async (id: string, updates: Partial<Device>) => {
   return await db('devices').where({ id }).update(updates).returning('*');
 };
 
-export const deleteDevice = async (id: number) => {
+export const deleteDevice = async (id: string) => {
   return await db('devices').where({ id }).del();
 };
-
