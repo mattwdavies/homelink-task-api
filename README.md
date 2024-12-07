@@ -28,7 +28,13 @@ To run this application, you need to have the following installed on your local 
 
 ### Running the Application with Docker
 
-1. **Build and Run the Docker Containers**
+1. **Install NPM Dependencies**
+
+   In the root directory run
+
+   `npm install`
+
+2. **Build and Run the Docker Containers**
 
    Use Docker Compose to build and run the containers:
 
@@ -36,7 +42,7 @@ To run this application, you need to have the following installed on your local 
 
    This command will start both the application and PostgreSQL database in separate containers.
 
-2. **Migrate and Seed the Database**
+3. **Migrate and Seed the Database**
 
    Open a new terminal window and run the following command to create the database schema and seed it with initial data:
 
@@ -44,7 +50,7 @@ To run this application, you need to have the following installed on your local 
 
    `docker-compose exec app npm run seed`
 
-3. **Testing**
+4. **Testing**
 
    To run your test suite, you must have you docker container running:
    (it would be nice in future to not have to run against a containerised app for testing purposes)
