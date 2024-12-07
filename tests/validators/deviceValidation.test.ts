@@ -2,7 +2,12 @@ import { deviceSchema, deviceUpdateSchema } from '../../src/validators/deviceVal
 
 describe('Device Validation', () => {
   it('should validate a valid device schema', async () => {
-    const validDevice = { name: 'Device', type: 'sensor', model: 'M100', status: true };
+    const validDevice = {
+      name: 'Device',
+      type: 'sensor',
+      model: 'M100',
+      status: true
+    };
     await expect(deviceSchema.validate(validDevice)).resolves.toEqual(validDevice);
   });
 

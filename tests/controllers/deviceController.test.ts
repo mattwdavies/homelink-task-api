@@ -17,7 +17,12 @@ describe('Device Controller', () => {
   });
 
   it('should create a device', async () => {
-    const newDevice = { name: 'Test Device', type: 'sensor', model: 'T1000', status: true };
+    const newDevice = {
+      name: 'Test Device',
+      type: 'sensor',
+      model: 'T1000',
+      status: true
+    };
     const createdDevice = { id: '1', ...newDevice };
 
     mock(deviceModel.createDevice).mockResolvedValue([createdDevice]);
@@ -32,8 +37,20 @@ describe('Device Controller', () => {
 
   it('should retrieve all devices', async () => {
     const devices = [
-      { id: '1', name: 'Device 1', type: 'sensor', model: 'M100', status: true },
-      { id: '2', name: 'Device 2', type: 'actuator', model: 'A200', status: false },
+      {
+        id: '1',
+        name: 'Device 1',
+        type: 'sensor',
+        model: 'M100',
+        status: true
+      },
+      {
+        id: '2',
+        name: 'Device 2',
+        type: 'actuator',
+        model: 'A200',
+        status: false
+      }
     ];
 
     mock(deviceModel.getAllDevices).mockResolvedValue(devices);
@@ -47,7 +64,13 @@ describe('Device Controller', () => {
   });
 
   it('should retrieve a device by ID', async () => {
-    const device = { id: '1', name: 'Device 1', type: 'sensor', model: 'M100', status: true };
+    const device = {
+      id: '1',
+      name: 'Device 1',
+      type: 'sensor',
+      model: 'M100',
+      status: true
+    };
 
     mock(deviceModel.getDeviceById).mockResolvedValue(device);
 
@@ -71,7 +94,13 @@ describe('Device Controller', () => {
   it('should update a device', async () => {
     const deviceId = '1';
     const updates = { status: false };
-    const updatedDevice = { id: deviceId, name: 'Device 1', type: 'sensor', model: 'M100', status: false };
+    const updatedDevice = {
+      id: deviceId,
+      name: 'Device 1',
+      type: 'sensor',
+      model: 'M100',
+      status: false
+    };
 
     mock(deviceModel.updateDevice).mockResolvedValue([updatedDevice]);
 
