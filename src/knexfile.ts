@@ -17,6 +17,10 @@ const knexConfig: Knex.Config = {
   migrations: {
     extension: 'ts',
     directory: path.resolve(__dirname, './migrations')
+  },
+  seeds: {
+    directory: './seeds',
+    extension: 'ts'
   }
 };
 
