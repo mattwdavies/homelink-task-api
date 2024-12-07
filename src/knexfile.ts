@@ -12,7 +12,8 @@ const knexConfig: Knex.Config = {
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
     database: process.env.DB_NAME,
-    ssl: { rejectUnauthorized: false }
+    // in production systems we would want to use ssl
+    ssl: false
   },
   migrations: {
     extension: 'ts',
