@@ -16,7 +16,7 @@ const knexConfig: Knex.Config = {
   },
   migrations: {
     extension: 'ts',
-    directory: './migrations',
+    directory: path.resolve(__dirname, './migrations'),
   }
 };
 

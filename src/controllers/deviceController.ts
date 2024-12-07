@@ -17,8 +17,9 @@ export const registerDevice: RequestHandler = async (req, res): Promise<void> =>
   try {
     const validatedData = await validateWithYup(deviceSchema, req.body);
 
-    const newDevice = await deviceModel.createDevice(validatedData);
-    res.status(HttpStatus.CREATED).json(newDevice);
+const newDevice = await deviceModel.createDevice(validatedData);
+res.status(HttpStatus.CREATED).json(newDevice[0]);
+
   } catch (error) {
     if (error instanceof ValidationError) {
       res.status(HttpStatus.BAD_REQUEST).json({ errors: error.errors });
@@ -54,19 +55,20 @@ export const getDeviceDetails: RequestHandler = async (req, res): Promise<void> 
   }
 };
 
-// Update the status or details of a device
+// Update a device
 export const updateDeviceStatus: RequestHandler = async (req, res): Promise<void> => {
   const { id } = req.params;
 
   try {
     const validatedData = await validateWithYup(deviceUpdateSchema, req.body);
 
-    const updatedDevice = await deviceModel.updateDevice(id, validatedData);
-    if (!updatedDevice) {
-      res.status(HttpStatus.NOT_FOUND).json({ error: ErrorMessage.DEVICE_NOT_FOUND });
-      return;
-    }
-    res.status(HttpStatus.OK).json(updatedDevice);
+const updatedDevice = await deviceModel.updateDevice(id, validatedData);
+if (!updatedDevice.length) {
+  res.status(HttpStatus.NOT_FOUND).json({ error: ErrorMessage.DEVICE_NOT_FOUND });
+  return;
+}
+res.status(HttpStatus.OK).json(updatedDevice[0]);
+
   } catch (error) {
     if (error instanceof ValidationError) {
       res.status(HttpStatus.BAD_REQUEST).json({ errors: error.errors });
