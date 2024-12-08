@@ -98,7 +98,7 @@ DB_NAME=mydb
 
 ### Register a Device
 
-- **Endpoint**: POST /devices
+- **Endpoint**: POST http://localhost:3000/api/devices
 - **Body**:
 
 ```
@@ -112,17 +112,17 @@ DB_NAME=mydb
 
 ### List All Devices
 
-- **Endpoint**: GET /devices
+- **Endpoint**: GET http://localhost:3000/api/devices
 
 ### Get Device Details
 
-- **Endpoint**: GET /devices/:id
+- **Endpoint**: GET http://localhost:3000/api/devices/:id
 
 ### Update Device Status
 
-- **Endpoint**: PUT /devices/:id
+- **Endpoint**: PUT http://localhost:3000/api/devices/:id
 - **Body**: JSON object with updated device details.
 
 ### Delete a Device
 
-- **Endpoint**: DELETE /devices/:id
+- **Endpoint**: DELETE http://localhost:3000/api/devices/:id
